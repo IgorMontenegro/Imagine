@@ -327,7 +327,7 @@ blockquote.alignright {
 
 blockquote.alignleft p,
 blockquote.alignright p {
-	margin-bottom: 17px;
+	margin-bottom: 17px;/**tables*/
 }
 
 
@@ -670,7 +670,7 @@ img {
 	left: 0;
 }
 
-.mejs-volume-button.mejs-unmute button:before {
+.mejs-volume-button.mejs-unmute button:before { /**table especific*/
 	content: '\f109';
 	left: 0;
 	position: absolute;

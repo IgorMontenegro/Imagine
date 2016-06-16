@@ -19,7 +19,7 @@ For more information about Twenty Fourteen please go to https://codex.wordpress.
 3. Click on the 'Activate' button to use your new theme right away.
 4. Go to https://codex.wordpress.org/Twenty_Fourteen for a guide to customize this theme.
 5. Navigate to Appearance > Customize in your admin panel.
-
+6. Obs
 == Copyright ==
 
 Twenty Fourteen WordPress Theme, Copyright 2013-2015 WordPress.org & Automattic.com
