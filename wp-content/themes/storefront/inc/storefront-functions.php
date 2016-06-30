@@ -63,8 +63,16 @@ function storefront_get_content_background_color() {
  * @since  2.0.0
  */
 function storefront_header_styles() {
+	$is_header_image = get_header_image();
+
+	if ( $is_header_image ) {
+		$header_bg_image = 'url(' . esc_url( $is_header_image ) . ')';
+	} else {
+		$header_bg_image = 'none';
+	}
+
 	$styles = apply_filters( 'storefront_header_styles', array(
-		'background-image' => 'url(' . esc_url( get_header_image() ) . ')',
+		'background-image' => $header_bg_image,
 	) );
 
 	foreach ( $styles as $style => $value ) {
@@ -140,6 +148,28 @@ function storefront_sanitize_choices( $input, $setting ) {
  */
 function storefront_sanitize_checkbox( $checked ) {
 	return ( ( isset( $checked ) && true == $checked ) ? true : false );
+}
+
+/**
+ * Schema type
+ *
+ * @return void
+ */
+function storefront_html_tag_schema() {
+	_deprecated_function( 'storefront_html_tag_schema', '2.0.2' );
+
+	$schema = 'http://schema.org/';
+	$type   = 'WebPage';
+
+	if ( is_singular( 'post' ) ) {
+		$type = 'Article';
+	} elseif ( is_author() ) {
+		$type = 'ProfilePage';
+	} elseif ( is_search() ) {
+		$type 	= 'SearchResultsPage';
+	}
+
+	echo 'itemscope="itemscope" itemtype="' . esc_attr( $schema ) . esc_attr( $type ) . '"';
 }
 
 /**

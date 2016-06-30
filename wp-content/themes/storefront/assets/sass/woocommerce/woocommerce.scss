@@ -1027,6 +1027,21 @@ form.checkout {
 		margin: 0 !important;
 		padding: 0 !important;
 
+		> .wc_payment_method {
+			> label {
+				display: block;
+				padding: 1.387em;
+				cursor: pointer;
+
+				&:before {
+					@include fa-icon();
+					content: "\f10c";
+					margin-right: .53em;
+					@include transition(color, ease, .2s);
+				}
+			}
+		}
+
 		li {
 			list-style: none !important;
 			margin-left: 0;
@@ -1043,19 +1058,6 @@ form.checkout {
 			&:last-child {
 				padding-bottom: 0;
 				border-bottom: 0;
-			}
-
-			label {
-				display: block;
-				padding: 1.387em;
-				cursor: pointer;
-
-				&:before {
-					@include fa-icon();
-					content: "\f10c";
-					margin-right: .53em;
-					@include transition(color, ease, .2s);
-				}
 			}
 
 			input[type=radio]:first-child {
@@ -1086,6 +1088,10 @@ form.checkout {
 
 					.form-row {
 						margin-bottom: 1em;
+
+						input[type="checkbox"] {
+							margin-right: 5px;
+						}
 					}
 
 					.form-row-first {
@@ -1106,6 +1112,10 @@ form.checkout {
 						width: 75%;
 						float: right;
 					}
+				}
+
+				ul.wc-saved-payment-methods {
+					margin-left: 0;
 				}
 
 				.wc-credit-card-form-card-number,
@@ -1213,6 +1223,10 @@ form.checkout {
 		.payment-fixed {
 			top: 32px;
 		}
+
+		#wc_checkout_add_ons label + br {
+			display: none;
+		}
 	}
 }
 
@@ -1270,7 +1284,7 @@ form.checkout {
 			border-bottom: 1px solid $color_border;
 			position: relative;
 
-			&.current-item {
+			&.is-active {
 				a:before {
 					opacity: 1;
 				}
@@ -1324,6 +1338,10 @@ form.checkout {
 
 			&.woocommerce-MyAccount-navigation-link--customer-logout a:before {
 				content: "\f08b";
+			}
+
+			&.woocommerce-MyAccount-navigation-link--subscriptions a:before {
+				content: "\f021";
 			}
 		}
 	}
@@ -1493,7 +1511,7 @@ p.order-again {
 .demo_store {
 	position: fixed;
 	left: 0;
-	bottom: 0;
+	bottom: 69px;
 	right: 0;
 	margin: 0;
 	padding: 1em 1.387em;
@@ -1798,11 +1816,11 @@ dl.variation {
 /**
  * My Account
  */
- .woocommerce-MyAccount-content {
- 	.woocommerce-Pagination {
- 		text-align: center;
- 	}
- }
+.woocommerce-MyAccount-content {
+	.woocommerce-Pagination {
+		text-align: center;
+	}
+}
 
 /**
  * Homepage
@@ -1819,6 +1837,10 @@ dl.variation {
 }
 
 @include susy-media($desktop) {
+	.demo_store {
+		bottom: 0;
+	}
+
 	/**
 	 * Handheld footer bar
 	 */
